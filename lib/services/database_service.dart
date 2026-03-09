@@ -7,11 +7,17 @@ class DatabaseService {
 
   // Create
   Future<void> addStudent(String name, String studentId, String degree) async {
-    await studentsCollection.add({
-      'name': name,
-      'studentId': studentId,
-      'degree': degree,
-    });
+    try {
+      await studentsCollection.add({
+        'name': name,
+        'studentId': studentId,
+        'degree': degree,
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+    } catch (e) {
+      print("Error adding student to Firestore: $e");
+      rethrow;
+    }
   }
 
   // Read
@@ -26,15 +32,25 @@ class DatabaseService {
   // Update
   Future<void> updateStudent(
       String id, String name, String studentId, String degree) async {
-    return await studentsCollection.doc(id).update({
-      'name': name,
-      'studentId': studentId,
-      'degree': degree,
-    });
+    try {
+      await studentsCollection.doc(id).update({
+        'name': name,
+        'studentId': studentId,
+        'degree': degree,
+      });
+    } catch (e) {
+      print("Error updating student: $e");
+      rethrow;
+    }
   }
 
   // Delete
   Future<void> deleteStudent(String id) async {
-    return await studentsCollection.doc(id).delete();
+    try {
+      await studentsCollection.doc(id).delete();
+    } catch (e) {
+      print("Error deleting student: $e");
+      rethrow;
+    }
   }
 }

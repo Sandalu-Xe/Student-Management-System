@@ -9,10 +9,11 @@ void main() async {
   
   try {
     if (kIsWeb) {
+      // IMPORTANT: Ensure you use your Firebase Web App ID here!
       await Firebase.initializeApp(
         options: const FirebaseOptions(
           apiKey: "AIzaSyBBFU0fHeVYH_Rd3WlhgXY_T1VUwIPvXRQ",
-          appId: "1:793718503034:android:9777b69ae6376ac15fadc3", // Example: "1:793718503034:web:abcd..."
+          appId: "1:793718503034:web:9777b69ae6376ac15fadc3", // CHECK THIS VALUE
           messagingSenderId: "793718503034",
           projectId: "student-management-syste-82db4",
           storageBucket: "student-management-syste-82db4.firebasestorage.app",
@@ -21,6 +22,7 @@ void main() async {
     } else {
       await Firebase.initializeApp();
     }
+    print("Firebase initialized successfully");
   } catch (e) {
     print("Firebase initialization error: $e");
   }

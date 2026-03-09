@@ -22,28 +22,36 @@ class _DeleteStudentsState extends State<DeleteStudents> {
     // Based on the UI, it's likely a search-then-delete or delete-by-id field.
     // I'll implement a query to find the student with that Student ID and delete them.
     
-    final querySnapshot = await _db.studentsCollection
-        .where('studentId', isEqualTo: studentIdSearch)
-        .get();
+    try {
+      final querySnapshot = await _db.studentsCollection
+          .where('studentId', isEqualTo: studentIdSearch)
+          .get();
 
-    if (querySnapshot.docs.isEmpty) {
+      if (querySnapshot.docs.isEmpty) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Student not found!')),
+          );
+        }
+        return;
+      }
+
+      for (var doc in querySnapshot.docs) {
+        await _db.deleteStudent(doc.id);
+      }
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Student not found!')),
+          const SnackBar(content: Text('Student deleted successfully!')),
+        );
+        _idController.clear();
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Delete failed: ${e.toString()}')),
         );
       }
-      return;
-    }
-
-    for (var doc in querySnapshot.docs) {
-      await _db.deleteStudent(doc.id);
-    }
-
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Student deleted successfully!')),
-      );
-      _idController.clear();
     }
   }
 
