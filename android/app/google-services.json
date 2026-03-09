@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "793718503034",
+    "project_id": "student-management-syste-82db4",
+    "storage_bucket": "student-management-syste-82db4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793718503034:android:9777b69ae6376ac15fadc3",
+        "android_client_info": {
+          "package_name": "com.samindi.student_management_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBFU0fHeVYH_Rd3WlhgXY_T1VUwIPvXRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
