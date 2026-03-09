@@ -7,7 +7,7 @@ class DatabaseService {
 
   // Create
   Future<void> addStudent(String name, String studentId, String degree) async {
-    return await studentsCollection.add({
+    await studentsCollection.add({
       'name': name,
       'studentId': studentId,
       'degree': degree,
