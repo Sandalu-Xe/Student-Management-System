@@ -4,7 +4,7 @@ import '../services/database_service.dart';
 import 'update_student.dart';
 
 class ViewStudents extends StatelessWidget {
-  const ViewStudents({super.key});
+  ViewStudents({super.key});
 
   final DatabaseService _db = DatabaseService();
 

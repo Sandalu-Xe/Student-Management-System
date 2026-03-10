@@ -42,7 +42,19 @@ class _DeleteStudentsState extends State<DeleteStudents> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Student deleted successfully!')),
+          SnackBar(
+            content: Row(
+              children: const [
+                Icon(Icons.delete_sweep_rounded, color: Colors.white),
+                SizedBox(width: 12),
+                Text('Student record removed!'),
+              ],
+            ),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.red[700],
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            margin: const EdgeInsets.fromLTRB(24, 0, 24, 110),
+          ),
         );
         _idController.clear();
       }
@@ -202,7 +214,7 @@ class _DeleteStudentsState extends State<DeleteStudents> {
       ),
     );
   }
-}
+
   @override
   void dispose() {
     _idController.dispose();

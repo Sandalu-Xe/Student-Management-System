@@ -22,7 +22,19 @@ class _CreateStudentState extends State<CreateStudent> {
       await _db.addStudent(_name, _studentId, _degree);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Student added successfully!')),
+          SnackBar(
+            content: Row(
+              children: const [
+                Icon(Icons.check_circle_rounded, color: Colors.white),
+                SizedBox(width: 12),
+                Text('Student recorded successfully!'),
+              ],
+            ),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.indigo,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            margin: const EdgeInsets.fromLTRB(24, 0, 24, 110), // Adjust for floating nav
+          ),
         );
         _formKey.currentState!.reset();
       }

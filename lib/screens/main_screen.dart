@@ -13,10 +13,10 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    CreateStudent(),
+  final List<Widget> _widgetOptions = [
+    const CreateStudent(),
     ViewStudents(),
-    DeleteStudents(),
+    const DeleteStudents(),
   ];
 
   void _onItemTapped(int index) {
