@@ -43,56 +43,71 @@ class _UpdateStudentState extends State<UpdateStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Update'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-        centerTitle: true,
+        title: const Text('Update Student'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24.0),
         child: Form(
           key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 100),
+              Text(
+                'Edit Student Details',
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.indigo,
+                    ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Update the information for this student record.',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Colors.grey[600],
+                    ),
+              ),
+              const SizedBox(height: 32),
               TextFormField(
                 initialValue: _name,
                 decoration: const InputDecoration(
-                  labelText: 'Name',
-                  suffixIcon: Icon(Icons.close),
+                  labelText: 'Full Name',
+                  prefixIcon: Icon(Icons.person),
                 ),
-                validator: (val) => val!.isEmpty ? 'Enter a name' : null,
+                textInputAction: TextInputAction.next,
+                validator: (val) => val!.isEmpty ? 'Please enter a name' : null,
                 onSaved: (val) => _name = val!,
               ),
               const SizedBox(height: 20),
               TextFormField(
                 initialValue: _studentId,
                 decoration: const InputDecoration(
-                  labelText: 'Id',
-                  suffixIcon: Icon(Icons.close),
+                  labelText: 'Student ID',
+                  prefixIcon: Icon(Icons.badge),
                 ),
-                validator: (val) => val!.isEmpty ? 'Enter an ID' : null,
+                textInputAction: TextInputAction.next,
+                validator: (val) => val!.isEmpty ? 'Please enter an ID' : null,
                 onSaved: (val) => _studentId = val!,
               ),
               const SizedBox(height: 20),
               TextFormField(
                 initialValue: _degree,
                 decoration: const InputDecoration(
-                  labelText: 'Degree',
-                  suffixIcon: Icon(Icons.close),
+                  labelText: 'Degree Program',
+                  prefixIcon: Icon(Icons.school),
                 ),
-                validator: (val) => val!.isEmpty ? 'Enter a degree' : null,
+                textInputAction: TextInputAction.done,
+                onFieldSubmitted: (_) => _update(),
+                validator: (val) => val!.isEmpty ? 'Please enter a degree' : null,
                 onSaved: (val) => _degree = val!,
               ),
-              const SizedBox(height: 40),
-              ElevatedButton(
+              const SizedBox(height: 48),
+              ElevatedButton.icon(
                 onPressed: _update,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                icon: const Icon(Icons.save_outlined),
+                label: const Text(
+                  'Update Student Info',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                child: const Text('Update'),
               ),
             ],
           ),

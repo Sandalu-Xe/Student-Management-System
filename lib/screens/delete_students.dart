@@ -57,41 +57,75 @@ class _DeleteStudentsState extends State<DeleteStudents> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Delete'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const SizedBox(height: 200),
-            TextField(
-              controller: _idController,
-              decoration: const InputDecoration(
-                labelText: 'Id',
-                suffixIcon: Icon(Icons.close),
-              ),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(24.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Remove Student',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red[700],
+                ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Enter the Student ID to remove their record from the system.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.grey[600],
+                ),
+          ),
+          const SizedBox(height: 48),
+          TextField(
+            controller: _idController,
+            decoration: const InputDecoration(
+              labelText: 'Student ID',
+              prefixIcon: Icon(Icons.badge, color: Colors.indigo),
+              hintText: 'e.g. STU12345',
             ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: _deleteById,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-              ),
-              child: const Text('Delete'),
+            textInputAction: TextInputAction.done,
+            onSubmitted: (_) => _deleteById(),
+          ),
+          const SizedBox(height: 32),
+          ElevatedButton.icon(
+            onPressed: _deleteById,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red[700],
+              foregroundColor: Colors.white,
             ),
-          ],
-        ),
+            icon: const Icon(Icons.delete_forever),
+            label: const Text(
+              'Confirm Deletion',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: 24),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.amber[50],
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: Colors.amber[200]!),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.warning_amber_rounded, color: Colors.amber[800]),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'Warning: This action is permanent and cannot be undone.',
+                    style: TextStyle(color: Colors.amber[900], fontSize: 13),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
-
+}
   @override
   void dispose() {
     _idController.dispose();

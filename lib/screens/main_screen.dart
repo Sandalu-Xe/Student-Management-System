@@ -28,25 +28,34 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+      appBar: AppBar(
+        title: const Text('Student Hub'),
+      ),
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: _onItemTapped,
+        indicatorColor: Colors.amber.withOpacity(0.2),
+        destinations: const <NavigationDestination>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.add_circle, color: Colors.indigo),
             icon: Icon(Icons.add_circle_outline),
-            label: 'Create',
+            label: 'Add Student',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
-            label: 'Read',
+          NavigationDestination(
+            selectedIcon: Icon(Icons.list_alt, color: Colors.indigo),
+            icon: Icon(Icons.list_alt_outlined),
+            label: 'Students',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
+            selectedIcon: Icon(Icons.delete_forever, color: Colors.red),
             icon: Icon(Icons.delete_outline),
-            label: 'Delete',
+            label: 'Remove',
           ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
       ),
     );
   }

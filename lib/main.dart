@@ -37,9 +37,54 @@ class StudentManagementApp extends StatelessWidget {
       title: 'Student Management System',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.indigo,
+          primary: Colors.indigo,
+          secondary: Colors.amber,
+          surface: Colors.grey[50]!,
+        ),
         fontFamily: 'Roboto',
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          backgroundColor: Colors.indigo,
+          foregroundColor: Colors.white,
+          elevation: 0,
+        ),
+        cardTheme: CardTheme(
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.indigo,
+            foregroundColor: Colors.white,
+            minimumSize: const Size(double.infinity, 50),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: Colors.white,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.indigo.withOpacity(0.2)),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.indigo.withOpacity(0.1)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Colors.indigo, width: 2),
+          ),
+          prefixIconColor: Colors.indigo,
+        ),
       ),
       home: const MainScreen(),
     );

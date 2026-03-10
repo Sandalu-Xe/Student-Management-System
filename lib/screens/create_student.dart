@@ -31,58 +31,71 @@ class _CreateStudentState extends State<CreateStudent> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Create'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              const SizedBox(height: 100),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  suffixIcon: Icon(Icons.close),
-                ),
-                validator: (val) => val!.isEmpty ? 'Enter a name' : null,
-                onSaved: (val) => _name = val!,
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(24.0),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Add New Student',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.indigo,
+                  ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Fill in the details below to register a new student.',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[600],
+                  ),
+            ),
+            const SizedBox(height: 32),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Full Name',
+                prefixIcon: Icon(Icons.person),
+                hintText: 'e.g. John Doe',
               ),
-              const SizedBox(height: 20),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Id',
-                  suffixIcon: Icon(Icons.close),
-                ),
-                validator: (val) => val!.isEmpty ? 'Enter an ID' : null,
-                onSaved: (val) => _studentId = val!,
+              textInputAction: TextInputAction.next,
+              validator: (val) => val!.isEmpty ? 'Please enter a name' : null,
+              onSaved: (val) => _name = val!,
+            ),
+            const SizedBox(height: 20),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Student ID',
+                prefixIcon: Icon(Icons.badge),
+                hintText: 'e.g. STU12345',
               ),
-              const SizedBox(height: 20),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Degree',
-                  suffixIcon: Icon(Icons.close),
-                ),
-                validator: (val) => val!.isEmpty ? 'Enter a degree' : null,
-                onSaved: (val) => _degree = val!,
+              textInputAction: TextInputAction.next,
+              validator: (val) => val!.isEmpty ? 'Please enter an ID' : null,
+              onSaved: (val) => _studentId = val!,
+            ),
+            const SizedBox(height: 20),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Degree Program',
+                prefixIcon: Icon(Icons.school),
+                hintText: 'e.g. Computer Science',
               ),
-              const SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: _submit,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                ),
-                child: const Text('Submit'),
+              textInputAction: TextInputAction.done,
+              onFieldSubmitted: (_) => _submit(),
+              validator: (val) => val!.isEmpty ? 'Please enter a degree' : null,
+              onSaved: (val) => _degree = val!,
+            ),
+            const SizedBox(height: 48),
+            ElevatedButton.icon(
+              onPressed: _submit,
+              icon: const Icon(Icons.check_circle_outline),
+              label: const Text(
+                'Register Student',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
