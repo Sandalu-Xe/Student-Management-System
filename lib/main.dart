@@ -39,51 +39,67 @@ class StudentManagementApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo,
-          primary: Colors.indigo,
-          secondary: Colors.amber,
-          surface: Colors.grey[50]!,
+          seedColor: const Color(0xFF6366F1), // Indigo
+          primary: const Color(0xFF6366F1),
+          secondary: const Color(0xFFF59E0B), // Amber
+          surface: Colors.white,
+          background: const Color(0xFFF8FAFC),
         ),
-        fontFamily: 'Roboto',
+        fontFamily: 'Inter',
         appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          backgroundColor: Colors.indigo,
-          foregroundColor: Colors.white,
+          centerTitle: false,
+          backgroundColor: Colors.transparent,
+          foregroundColor: Color(0xFF1E293B),
           elevation: 0,
+          titleTextStyle: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w800,
+            color: Color(0xFF1E293B),
+            letterSpacing: -0.5,
+          ),
         ),
         cardTheme: CardTheme(
-          elevation: 2,
+          elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(24),
+            side: BorderSide(color: Colors.indigo.withOpacity(0.05)),
           ),
-          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          color: Colors.white,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.indigo,
+            backgroundColor: const Color(0xFF6366F1),
             foregroundColor: Colors.white,
-            minimumSize: const Size(double.infinity, 50),
+            minimumSize: const Size(double.infinity, 56),
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.2,
             ),
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: Colors.white,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.indigo.withOpacity(0.2)),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide(color: Colors.indigo.withOpacity(0.1)),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.indigo, width: 2),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: Colors.indigo.withOpacity(0.05)),
           ),
-          prefixIconColor: Colors.indigo,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: Color(0xFF6366F1), width: 2),
+          ),
+          labelStyle: const TextStyle(color: Color(0xFF64748B), fontWeight: FontWeight.w500),
+          prefixIconColor: const Color(0xFF6366F1),
         ),
       ),
       home: const MainScreen(),
