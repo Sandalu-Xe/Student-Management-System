@@ -3,7 +3,7 @@
 A modern, premium Student Management System built with Flutter and Firebase.
 
 ## ✍️ Author
-**Samadi Hansika**
+**Samindi  Hansika**
 
 ## 🚀 Features
 - **Ultra-Premium UI**: Glassmorphic elements, gradients, and smooth animations using Material 3.
