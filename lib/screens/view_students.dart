@@ -107,10 +107,11 @@ class ViewStudents extends StatelessWidget {
                           ),
                           subtitle: Padding(
                             padding: const EdgeInsets.only(top: 8.0),
-                            child: Row(
+                            child: Wrap(
+                              spacing: 8,
+                              runSpacing: 4,
                               children: [
                                 _buildInfoChip(Icons.badge_outlined, student.studentId),
-                                const SizedBox(width: 8),
                                 _buildInfoChip(Icons.school_outlined, student.degree),
                               ],
                             ),

@@ -87,9 +87,9 @@ class _MainScreenState extends State<MainScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildNavItem(0, Icons.add_circle_rounded, 'Add'),
-                _buildNavItem(1, Icons.grid_view_rounded, 'Search'),
-                _buildNavItem(2, Icons.delete_rounded, 'Remove'),
+                Expanded(child: _buildNavItem(0, Icons.add_circle_rounded, 'Add')),
+                Expanded(child: _buildNavItem(1, Icons.grid_view_rounded, 'Search')),
+                Expanded(child: _buildNavItem(2, Icons.delete_rounded, 'Remove')),
               ],
             ),
           ),
